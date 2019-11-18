@@ -12,39 +12,26 @@ import javax.validation.constraints.NotNull;
  * Beispiel-Entity-Klasse zur Verwaltung von Welten
  */
 @Entity
-public class Lamp implements Serializable  {
+public class Engine implements Serializable  {
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long deviceID;
 	
 	private String deviceName;
-	private String color;
 	private boolean isActive;
 	private Long price;
-	private int brightness;
-	private String lampType;
+	private int rotationSpeed;
+	private int power;
+	private int torque;
 	
 	private Long roomID;
 
-	public Long getDeviceID() {
-		return deviceID;
-	}
-
-	
 	public String getDeviceName() {
 		return deviceName;
 	}
 
 	public void setDeviceName(String deviceName) {
 		this.deviceName = deviceName;
-	}
-
-	public String getColor() {
-		return color;
-	}
-
-	public void setColor(String color) {
-		this.color = color;
 	}
 
 	public boolean isActive() {
@@ -63,20 +50,28 @@ public class Lamp implements Serializable  {
 		this.price = price;
 	}
 
-	public int getBrightness() {
-		return brightness;
+	public int getRotationSpeed() {
+		return rotationSpeed;
 	}
 
-	public void setBrightness(int brightness) {
-		this.brightness = brightness;
+	public void setRotationSpeed(int rotationSpeed) {
+		this.rotationSpeed = rotationSpeed;
 	}
 
-	public String getLampType() {
-		return lampType;
+	public int getPower() {
+		return power;
 	}
 
-	public void setLampType(String lampType) {
-		this.lampType = lampType;
+	public void setPower(int power) {
+		this.power = power;
+	}
+
+	public int getTorque() {
+		return torque;
+	}
+
+	public void setTorque(int torque) {
+		this.torque = torque;
 	}
 
 	public Long getRoomID() {
@@ -86,6 +81,12 @@ public class Lamp implements Serializable  {
 	public void setRoomID(Long roomID) {
 		this.roomID = roomID;
 	}
+
+	public Long getDeviceID() {
+		return deviceID;
+	}
+
+	
 	
 	
 
