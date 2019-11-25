@@ -25,16 +25,7 @@ public class Schedule implements Serializable {
     private int interval;
     private int duration;
     private String scheduleName;
-    private List<Device> devices;
     
-    
-    
-	public List<Device> getDevices() {
-		return devices;
-	}
-	public void setDevices(List<Device> devices) {
-		this.devices = devices;
-	}
 	public Long getScheduleID() {
 		return scheduleID;
 	}
