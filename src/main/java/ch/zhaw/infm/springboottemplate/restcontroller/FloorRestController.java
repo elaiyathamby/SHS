@@ -1,7 +1,7 @@
 package ch.zhaw.infm.springboottemplate.restcontroller;
 
-import ch.zhaw.infm.springboottemplate.entities.Device;
-import ch.zhaw.infm.springboottemplate.repositories.DeviceRepository;
+import ch.zhaw.infm.springboottemplate.entities.Floor;
+import ch.zhaw.infm.springboottemplate.repositories.FloorRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,21 +16,21 @@ import org.springframework.web.bind.annotation.RestController;
  * REST-Controller für die Ressource World
  */
 @RestController
-public class DeviceRestController {
+public class FloorRestController {
     
     // Verdrahten der Repository-Klasse, um Karten in der Datenbank zu finden
     @Autowired
-    private DeviceRepository deviceRepository;
+    private FloorRepository floorRepository;
     
-    @RequestMapping(value = "/device/{roomId}", method = RequestMethod.GET)
-    public ResponseEntity<List<Device>> getDevicesForRoom(@PathVariable("roomId") Long i){
+    @RequestMapping(value = "/floor", method = RequestMethod.GET)
+    public ResponseEntity<List<Floor>> getFloor(){
         // Alle Karten aus dem Repository laden und der cards-Variable zuweisen
-        List<Device> devices = deviceRepository.findByRoomIdFk(i);
+        List<Floor> floor = floorRepository.findAll();
         
         // Wenn die Liste Einträge enthält...
-        if(devices != null && !devices.isEmpty()){
+        if(floor != null && !floor.isEmpty()){
             // ... dann diese als Body zurückgeben
-            return new ResponseEntity(devices, HttpStatus.OK);
+            return new ResponseEntity(floor, HttpStatus.OK);
         } else {
             // ... ansonsten ResourceNotFoundException (404)
             return new ResponseEntity(HttpStatus.NOT_FOUND);
