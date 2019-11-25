@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -18,6 +19,10 @@ public class Floor implements Serializable {
     
     private int floorNumber;
     private int floorSize;
+    
+    @ManyToOne
+    private House house;
+    
 	public int getFloorNumber() {
 		return floorNumber;
 	}

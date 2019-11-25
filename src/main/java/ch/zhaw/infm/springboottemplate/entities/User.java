@@ -21,8 +21,8 @@ public class User implements Serializable {
     private String userName;
     private String password;
     
-    @ManyToMany
-    private ArrayList<House> houses = new ArrayList<House>();
+   // @ManyToMany
+   // private ArrayList<House> houses = new ArrayList<House>();
     
 	public Long getUserID() {
 		return userID;

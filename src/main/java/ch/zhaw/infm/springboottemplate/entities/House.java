@@ -3,12 +3,16 @@ package ch.zhaw.infm.springboottemplate.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
+
+import org.hibernate.mapping.List;
 
 /**
  * 
@@ -22,8 +26,13 @@ public class House implements Serializable {
     private int houseSizeM2;
     private String houseName;
     
-    @ManyToMany
-    private ArrayList<User> users = new ArrayList<User>();
+    @OneToMany
+    private ArrayList<Floor> floors;
+    
+    @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+   // @JoinTable(name = "user_house",joinColumns = @JoinColumn(name = "houseID"),
+  //  inverseJoinColumns = @JoinColumn(name = "userID"))
+    //private ArrayList<User> users = new ArrayList<>();
     
 	public Long getHouseID() {
 		return houseID;
