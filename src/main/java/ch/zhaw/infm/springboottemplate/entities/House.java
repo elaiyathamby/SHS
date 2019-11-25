@@ -1,10 +1,13 @@
 package ch.zhaw.infm.springboottemplate.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -15,10 +18,12 @@ public class House implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long houseID;
-    
     private String adress;
     private int houseSizeM2;
     private String houseName;
+    
+    @ManyToMany
+    private ArrayList<User> users = new ArrayList<User>();
     
 	public Long getHouseID() {
 		return houseID;
