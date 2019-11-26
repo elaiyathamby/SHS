@@ -276,7 +276,7 @@ transition: all 250ms ease-in-out 0s;
 .card{
     float: left;
     margin: 3% 1.5% 3% 1.5%;
-    min-height: 420px;
+    min-height: 480px;
 }
 .cards{
     width: 100%;

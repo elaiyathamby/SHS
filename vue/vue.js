@@ -1,8 +1,8 @@
 
 
 
-Vue.component('card',{
-    data:function(){
+Vue.component('lamp', {
+    data: function () {
         return {
 
         }
@@ -30,8 +30,66 @@ Vue.component('card',{
                                 <a class="dropdown-item" href="#"
                                     onclick="changeColor('dropdownColor','blue');">Blue</a>
                             </div>
-                        </div>
+                        </div><br>
+                        <label for="customRange3">Brightness</label>
+                        <input type="range" class="custom-range" min="0" max="5" step="0.5" id="customRange3">
                     </p>
+                </div>
+            </div>
+        `
+})
+
+Vue.component('room', {
+    data: function () {
+        return {
+
+        }
+    },
+    template: `
+    <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="img\\living-room.jpg" alt="Living Room">
+                <div class="card-body">
+                    <h5 class="card-title">Living Room</h5>
+                    <p class="card-text">
+                        <p>Light</p>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                    </p>
+                    <p>
+                        <label for="customRange3">Brightness</label>
+                        <input type="range" class="custom-range" min="0" max="5" step="0.5" id="customRange3">
+                    <p/>
+                    <p class="card-text">Room Temp <input type="number" value="24"></p>
+                </div>
+            </div>
+        `
+})
+
+Vue.component('tv', {
+    data: function () {
+        return {
+
+        }
+    },
+    template: `
+    <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="img\\smart_tv.jpeg" alt="Smart Tv">
+                <div class="card-body">
+                    <h5 class="card-title">Smart TV</h5>
+                    <p class="card-text">
+                        <p>TV Power</p>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                    </p>
+                    <p>
+                        <label for="customRange3">Sound Level</label>
+                        <input type="range" class="custom-range" min="0" max="5" step="0.5" id="customRange3">
+                    </p>
+                    <p class="card-text">Chanel <input type="number" value="42"></p>
                 </div>
             </div>
         `
