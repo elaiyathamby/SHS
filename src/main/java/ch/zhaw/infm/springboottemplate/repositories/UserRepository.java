@@ -16,6 +16,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     List<User> findByUserName(String name);
     List<User> findByUserID(Long id);
     
+    
     //@Query("SELECT house.houseID FROM user WHERE user.userID = ?1 INNER JOIN user_house On user.userID = user_house.userID INNER JOIN house ON house.houseID = user_house.houseID;")
     //List<House> findAllHouses(Long userID);
     

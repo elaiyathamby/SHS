@@ -1,6 +1,7 @@
 package ch.zhaw.infm.springboottemplate.restcontroller;
 
 import ch.zhaw.infm.springboottemplate.entities.Lamp;
+import ch.zhaw.infm.springboottemplate.entities.Room;
 import ch.zhaw.infm.springboottemplate.repositories.LampRepository;
 import java.util.List;
 import java.util.Optional;
@@ -47,10 +48,10 @@ public class LampRestController {
      * 
      * @return                  HTTP-Response mit einem Status 200 oder 404, sowie im ersten Fall einer Liste aller Welten-Entitäten im JSON-Format
      */
-    @RequestMapping(value = "/lamp/{roomId}", method = RequestMethod.GET)
-    public ResponseEntity<List<Lamp>> getDevices(@PathVariable("roomId") Long i){
+    @RequestMapping(value = "/lamp/{lampID}", method = RequestMethod.GET)
+    public ResponseEntity<List<Lamp>> getDevices(@PathVariable("room") Long lampID){
         // Alle Karten aus dem Repository laden und der cards-Variable zuweisen
-        List<Lamp> lamp = lampRepository.findByRoomID(i);
+        List<Lamp> lamp = lampRepository.findByDeviceID(lampID);
         
         // Wenn die Liste Einträge enthält...
         if(lamp != null && !lamp.isEmpty()){

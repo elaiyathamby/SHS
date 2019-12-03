@@ -1,6 +1,7 @@
-package ch.zhaw.infm.springboottemplate.restcontroller;
+/*package ch.zhaw.infm.springboottemplate.restcontroller;
 
 import ch.zhaw.infm.springboottemplate.entities.Device;
+import ch.zhaw.infm.springboottemplate.entities.Room;
 import ch.zhaw.infm.springboottemplate.repositories.DeviceRepository;
 import java.util.List;
 import java.util.Optional;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * REST-Controller für die Ressource World
- */
+ *//*
 @RestController
 public class DeviceRestController {
     
@@ -22,10 +23,10 @@ public class DeviceRestController {
     @Autowired
     private DeviceRepository deviceRepository;
     
-    @RequestMapping(value = "/device/{roomId}", method = RequestMethod.GET)
-    public ResponseEntity<List<Device>> getDevicesForRoom(@PathVariable("roomId") Long i){
+    @RequestMapping(value = "/device/{room}", method = RequestMethod.GET)
+    public ResponseEntity<List<Device>> getDevicesForRoom(@PathVariable("room") Room room){
         // Alle Karten aus dem Repository laden und der cards-Variable zuweisen
-        List<Device> devices = deviceRepository.findByRoomIdFk(i);
+        List<Device> devices = deviceRepository.findByRoom(room);
         
         // Wenn die Liste Einträge enthält...
         if(devices != null && !devices.isEmpty()){
@@ -37,3 +38,4 @@ public class DeviceRestController {
         }
     }
 }
+*/

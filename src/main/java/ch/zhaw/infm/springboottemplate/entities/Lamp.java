@@ -1,42 +1,48 @@
 package ch.zhaw.infm.springboottemplate.entities;
 
 import java.io.Serializable;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 /**
  * Beispiel-Entity-Klasse zur Verwaltung von Welten
  */
 @Entity
-public class Lamp implements Serializable  {
+public class Lamp extends Device implements Serializable {
 	
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long deviceID;
-	
-	private String deviceName;
-	private String color;
+	/*@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long lampID;
+
+	private String lampName;
 	private boolean isActive;
-	private Long price;
+	private Long price;*/
+	
+	private String color;
 	private int brightness;
 	private String lampType;
-	
-	private Long roomID;
 
-	public Long getDeviceID() {
-		return deviceID;
+	/*@ManyToOne
+	private Room lampRoom;*/
+	@OneToMany
+	private Set<Schedule> lampSchedules;
+	
+	
+	
+
+	public Set<Schedule> getLampSchedules() {
+		return lampSchedules;
 	}
 
-	
-	public String getDeviceName() {
-		return deviceName;
-	}
-
-	public void setDeviceName(String deviceName) {
-		this.deviceName = deviceName;
+	public void setLampSchedules(Set<Schedule> lampSchedules) {
+		this.lampSchedules = lampSchedules;
 	}
 
 	public String getColor() {
@@ -45,22 +51,6 @@ public class Lamp implements Serializable  {
 
 	public void setColor(String color) {
 		this.color = color;
-	}
-
-	public boolean isActive() {
-		return isActive;
-	}
-
-	public void setActive(boolean isActive) {
-		this.isActive = isActive;
-	}
-
-	public Long getPrice() {
-		return price;
-	}
-
-	public void setPrice(Long price) {
-		this.price = price;
 	}
 
 	public int getBrightness() {
@@ -78,15 +68,5 @@ public class Lamp implements Serializable  {
 	public void setLampType(String lampType) {
 		this.lampType = lampType;
 	}
-
-	public Long getRoomID() {
-		return roomID;
-	}
-
-	public void setRoomID(Long roomID) {
-		this.roomID = roomID;
-	}
-	
-	
 
 }

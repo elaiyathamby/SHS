@@ -1,34 +1,52 @@
 package ch.zhaw.infm.springboottemplate.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 /**
  * Beispiel-Entity-Klasse zur Verwaltung von Welten
  */
-@Entity
+@MappedSuperclass
 public class Device implements Serializable {
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long deviceId;
+	private Long deviceID;
 
 	private String deviceName;
 	private boolean isActive;
 	private Long price;
 	
-	private Long roomIdFk;
+	@ManyToOne
+	private Room room;
+	@OneToMany
+	private Set<Schedule> schedules;
+	
+
+	public Room getRoom() {
+		return room;
+	}
+
+	public void setRoom(Room room) {
+		this.room = room;
+	}
 
 	public Long getDeviceId() {
-		return deviceId;
+		return deviceID;
 	}
 
 	public void setDeviceId(Long deviceId) {
-		this.deviceId = deviceId;
+		this.deviceID = deviceId;
 	}
 
 	public String getDeviceName() {

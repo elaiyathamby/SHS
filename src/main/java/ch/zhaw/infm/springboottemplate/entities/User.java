@@ -2,12 +2,14 @@ package ch.zhaw.infm.springboottemplate.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -21,9 +23,18 @@ public class User implements Serializable {
     private String userName;
     private String password;
     
-   // @ManyToMany
-   // private ArrayList<House> houses = new ArrayList<House>();
+    @OneToMany
+    private Set<House> houses;
     
+	public Set<House> getHouses() {
+		return houses;
+	}
+	public void setHouses(Set<House> houses) {
+		this.houses = houses;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	public Long getUserID() {
 		return userID;
 	}

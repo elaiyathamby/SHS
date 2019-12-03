@@ -1,10 +1,13 @@
 package ch.zhaw.infm.springboottemplate.entities;
 
 import java.io.Serializable;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
@@ -12,43 +15,34 @@ import javax.validation.constraints.NotNull;
  * Beispiel-Entity-Klasse zur Verwaltung von Welten
  */
 @Entity
-public class Engine implements Serializable  {
+public class Engine extends Device implements Serializable  {
 	
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long deviceID;
-	
-	private String deviceName;
+	/*@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long engineID;
+
+	private String engineName;
 	private boolean isActive;
-	private Long price;
+	private Long price;*/
+	
 	private int rotationSpeed;
 	private int power;
 	private int torque;
 	
-	private Long roomID;
+	/*@ManyToOne
+	private Room engineRoom;*/
+	@ManyToMany
+	private Set<Schedule> engineSchedules;
+	
+	
 
-	public String getDeviceName() {
-		return deviceName;
+	public Set<Schedule> getEngineSchedules() {
+		return engineSchedules;
 	}
 
-	public void setDeviceName(String deviceName) {
-		this.deviceName = deviceName;
+	public void setEngineSchedules(Set<Schedule> engineSchedules) {
+		this.engineSchedules = engineSchedules;
 	}
 
-	public boolean isActive() {
-		return isActive;
-	}
-
-	public void setActive(boolean isActive) {
-		this.isActive = isActive;
-	}
-
-	public Long getPrice() {
-		return price;
-	}
-
-	public void setPrice(Long price) {
-		this.price = price;
-	}
 
 	public int getRotationSpeed() {
 		return rotationSpeed;
@@ -74,17 +68,6 @@ public class Engine implements Serializable  {
 		this.torque = torque;
 	}
 
-	public Long getRoomID() {
-		return roomID;
-	}
-
-	public void setRoomID(Long roomID) {
-		this.roomID = roomID;
-	}
-
-	public Long getDeviceID() {
-		return deviceID;
-	}
 
 	
 	

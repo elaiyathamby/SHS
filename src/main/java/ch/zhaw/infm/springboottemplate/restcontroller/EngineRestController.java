@@ -1,6 +1,7 @@
 package ch.zhaw.infm.springboottemplate.restcontroller;
 
 import ch.zhaw.infm.springboottemplate.entities.Engine;
+import ch.zhaw.infm.springboottemplate.entities.Room;
 import ch.zhaw.infm.springboottemplate.repositories.EngineRepository;
 import java.util.List;
 import java.util.Optional;
@@ -47,10 +48,10 @@ public class EngineRestController {
      * 
      * @return                  HTTP-Response mit einem Status 200 oder 404, sowie im ersten Fall einer Liste aller Welten-Entitäten im JSON-Format
      */
-    @RequestMapping(value = "/engine/{roomId}", method = RequestMethod.GET)
-    public ResponseEntity<List<Engine>> getDevices(@PathVariable("roomId") Long i){
+    @RequestMapping(value = "/engine/{engineId}", method = RequestMethod.GET)
+    public ResponseEntity<List<Engine>> getDevices(@PathVariable("room") Long engineId){
         // Alle Karten aus dem Repository laden und der cards-Variable zuweisen
-        List<Engine> engine = engineRepository.findByRoomID(i);
+        List<Engine> engine = engineRepository.findByDeviceID(engineId);
         
         // Wenn die Liste Einträge enthält...
         if(engine != null && !engine.isEmpty()){
