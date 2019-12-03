@@ -68,16 +68,14 @@ Vue.component('room', {
 })
 
 Vue.component('tv', {
-    data: function () {
-        return {
-
-        }
+    data: {
+        tvname: 'Phillips'
     },
     template: `
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 18rem;" >
                 <img class="card-img-top" src="img\\smart_tv.jpeg" alt="Smart Tv">
                 <div class="card-body">
-                    <h5 class="card-title">Smart TV</h5>
+                    <h5 class="card-title">{{ this.tvname}} Smart TV</h5>
                     <p class="card-text">
                         <p>TV Power</p>
                         <label class="switch">
@@ -93,6 +91,56 @@ Vue.component('tv', {
                 </div>
             </div>
         `
+})
+
+Vue.component('app-level', {
+    data: function () {
+        return {
+
+        }
+    },
+    props: ['title', 'subMenueNumber'],
+    template: `
+        <li>
+            <a href="#subMenueNumber" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle btn">
+                <i class="fas fa-copy"></i>
+                {{ title }}
+            </a>
+            <ul class="collapse list-unstyled" id="subMenueNumber">
+                <li>
+                    <a href="#" onclick="changeRoom('Master Room')" class="btn btn-secondary">Master Room</a>
+                </li>
+                <li>
+                    <a href="#" onclick="changeRoom('Bathroom')" class="btn btn-secondary">Bathroom</a>
+                </li>
+                <li>
+                    <a href="#" onclick="changeRoom('Kids Room')" class="btn btn-secondary">Kids Room</a>
+                </li>
+            </ul>
+        </li>
+            `
+})
+
+var nav = new Vue({
+    el: '#app-nav',
+    data: {
+        title: "Level 3",
+        subMenueNumber: "lvl"
+    },
+    methods: {
+        changeMsg: function (text) {
+            this.message = text;
+        },
+        addMovie: function () {
+            if (this.movieTitle != "") {
+                this.movies.push({ name: this.movieTitle });
+                if (this.movies.length >= 5) {
+                    this.isDisabled = true;
+                    this.showMessage = true;
+                }
+            }
+        }
+    }
 })
 
 var app = new Vue({
