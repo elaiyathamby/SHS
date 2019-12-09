@@ -99,7 +99,7 @@ Vue.component('app-level', {
 
         }
     },
-    props: ['title', 'sml', 'smlref'],
+    props: ['title', 'sml', 'smlref' ],
     template: `
         <li>
             <a v-bind:href="smlref" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle btn">
