@@ -102,11 +102,11 @@ Vue.component('app-level', {
     props: ['title', 'subMenueNumber'],
     template: `
         <li>
-            <a href="#subMenueNumber" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle btn">
+            <a v-bind:href="subMenueNumber" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle btn">
                 <i class="fas fa-copy"></i>
                 {{ title }}
             </a>
-            <ul class="collapse list-unstyled" id="subMenueNumber">
+            <ul class="collapse list-unstyled" v-bind:id="subMenueNumber">
                 <li>
                     <a href="#" onclick="changeRoom('Master Room')" class="btn btn-secondary">Master Room</a>
                 </li>
