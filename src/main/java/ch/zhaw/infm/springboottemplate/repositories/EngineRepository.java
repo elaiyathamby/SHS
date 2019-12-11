@@ -12,5 +12,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface EngineRepository extends JpaRepository<Engine, Long> {
     
-    List<Engine> findByEngineID(Long id);
+    List<Engine> findByDeviceID(Long id);
 }

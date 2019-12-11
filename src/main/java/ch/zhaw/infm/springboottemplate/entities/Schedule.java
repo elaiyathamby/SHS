@@ -21,10 +21,10 @@ public class Schedule implements Serializable {
 	private Long scheduleID;
 
 	private String startat;
-	private String endatt;
+	private String endat;
 	private int interval;
 	private int duration;
-	private String scheduleName;
+	private String schedulename;
 	
 	@ManyToOne
 	private Lamp scheduleLamps;
@@ -39,10 +39,10 @@ public class Schedule implements Serializable {
 		this.startat = startat;
 	}
 	public String getEndatt() {
-		return endatt;
+		return endat;
 	}
 	public void setEndatt(String endatt) {
-		this.endatt = endatt;
+		this.endat = endat;
 	}
 	public int getInterval() {
 		return interval;
@@ -57,10 +57,10 @@ public class Schedule implements Serializable {
 		this.duration = duration;
 	}
 	public String getScheduleName() {
-		return scheduleName;
+		return schedulename;
 	}
 	public void setScheduleName(String scheduleName) {
-		this.scheduleName = scheduleName;
+		this.schedulename = scheduleName;
 	}
 	public Lamp getScheduleLamps() {
 		return scheduleLamps;

@@ -26,7 +26,7 @@ public class EngineRestController {
     @RequestMapping(value = "/engine/{engineId}", method = RequestMethod.GET)
     public ResponseEntity<List<Engine>> getEngineById(@PathVariable("engineId") Long engineId){
         // Alle Karten aus dem Repository laden und der cards-Variable zuweisen
-        List<Engine> engine = engineRepository.findByEngineID(engineId);
+        List<Engine> engine = engineRepository.findByDeviceID(engineId);
         
         // Wenn die Liste Einträge enthält...
         if(engine != null && !engine.isEmpty()){

@@ -12,6 +12,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * Beispiel-Entity-Klasse zur Verwaltung von Welten
  */
@@ -24,6 +26,7 @@ public class User implements Serializable {
     private String password;
     
     @OneToMany
+    @JsonIgnore
     private Set<House> houses;
     
 	public Set<House> getHouses() {

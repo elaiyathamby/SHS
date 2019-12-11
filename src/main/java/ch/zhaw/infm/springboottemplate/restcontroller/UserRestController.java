@@ -41,7 +41,7 @@ public class UserRestController {
     @RequestMapping(value = "/user/{userID}", method = RequestMethod.GET)
     public ResponseEntity<List<User>> getUserById(@PathVariable Long userID){
         // Alle Karten aus dem Repository laden und der cards-Variable zuweisen
-        List<User> user = userRepository.findByUserID(userID);
+    	List<User> user = userRepository.findByUserID(userID);
         
         // Wenn die Liste Einträge enthält...
         if(user != null && !user.isEmpty()){
@@ -53,7 +53,7 @@ public class UserRestController {
         }
     }
     
-    @RequestMapping(value = "/user/{userName}", method = RequestMethod.GET)
+    @RequestMapping(value = "/user/name/{userName}", method = RequestMethod.GET)
     public ResponseEntity<List<User>> getUserByName(@PathVariable("userName") String userName){
         // Alle Karten aus dem Repository laden und der cards-Variable zuweisen
         List<User> user = userRepository.findByUserName(userName);
