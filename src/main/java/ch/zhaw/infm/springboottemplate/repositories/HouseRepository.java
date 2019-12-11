@@ -18,5 +18,4 @@ public interface HouseRepository extends JpaRepository<House, Long> {
     List<House> findByHouseID(Long id);
     
     
-    
 }

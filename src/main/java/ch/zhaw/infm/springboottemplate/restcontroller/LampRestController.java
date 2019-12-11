@@ -23,35 +23,26 @@ public class LampRestController {
     @Autowired
     private LampRepository lampRepository;
     
-    /**
-     * REST-Ressource für URL /infmapi/v1/worlds/{name} (GET)
-     * 
-     * @param name        Name einer Welt
-     * @return               HTTP-Response mit einem Status 200 oder 404, sowie im ersten Fall einer zur Id passenden Welt-Entität als Body (automatisch als JSON serialisiert)
-     *
-    @RequestMapping(value = "/device/active", method = RequestMethod.GET)
-    public ResponseEntity<Device> getWorld(@PathVariable String name){        
-        // Zur Id passende Welt suchen
-        List<Device> device = deviceRepository.findAllByOrderByIsActive();
-        
-        // Falls Welt gefunden wurde, dann world zurück geben
-        if(device.isPresent()) {
-            return new ResponseEntity(device.get(), HttpStatus.OK);
-        } else {
-            // Ansonsten ResourceNotFoundException (404)
-            return new ResponseEntity(HttpStatus.NOT_FOUND);
-        }        
-    }*/
     
-    /**
-     * REST-Ressource für URL /infmapi/v1/worlds (GET)
-     * 
-     * @return                  HTTP-Response mit einem Status 200 oder 404, sowie im ersten Fall einer Liste aller Welten-Entitäten im JSON-Format
-     */
     @RequestMapping(value = "/lamp/{lampID}", method = RequestMethod.GET)
-    public ResponseEntity<List<Lamp>> getDevices(@PathVariable("room") Long lampID){
+    public ResponseEntity<List<Lamp>> getLampById(@PathVariable("lampID") Long lampID){
         // Alle Karten aus dem Repository laden und der cards-Variable zuweisen
         List<Lamp> lamp = lampRepository.findByDeviceID(lampID);
+        
+        // Wenn die Liste Einträge enthält...
+        if(lamp != null && !lamp.isEmpty()){
+            // ... dann diese als Body zurückgeben
+            return new ResponseEntity(lamp, HttpStatus.OK);
+        } else {
+            // ... ansonsten ResourceNotFoundException (404)
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
+    }
+    
+    @RequestMapping(value = "/lamp", method = RequestMethod.GET)
+    public ResponseEntity<List<Lamp>> getLamps(){
+        // Alle Karten aus dem Repository laden und der cards-Variable zuweisen
+        List<Lamp> lamp = lampRepository.findAll();
         
         // Wenn die Liste Einträge enthält...
         if(lamp != null && !lamp.isEmpty()){

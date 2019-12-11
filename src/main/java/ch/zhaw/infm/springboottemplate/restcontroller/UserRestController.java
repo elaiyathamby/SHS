@@ -38,18 +38,33 @@ public class UserRestController {
         }
     }
     
-   /* @RequestMapping(value = "/user/{userID}", method = RequestMethod.GET)
-    public ResponseEntity<List<User>> getAllHouseFromUser(@PathVariable Long userID){
+    @RequestMapping(value = "/user/{userID}", method = RequestMethod.GET)
+    public ResponseEntity<List<User>> getUserById(@PathVariable Long userID){
         // Alle Karten aus dem Repository laden und der cards-Variable zuweisen
-        List<House> houses = userRepository.findAllHouses(userID);
+        List<User> user = userRepository.findByUserID(userID);
         
         // Wenn die Liste Einträge enthält...
-        if(houses != null && !houses.isEmpty()){
+        if(user != null && !user.isEmpty()){
             // ... dann diese als Body zurückgeben
-            return new ResponseEntity(houses, HttpStatus.OK);
+            return new ResponseEntity(user, HttpStatus.OK);
         } else {
             // ... ansonsten ResourceNotFoundException (404)
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
-    }*/
+    }
+    
+    @RequestMapping(value = "/user/{userName}", method = RequestMethod.GET)
+    public ResponseEntity<List<User>> getUserByName(@PathVariable("userName") String userName){
+        // Alle Karten aus dem Repository laden und der cards-Variable zuweisen
+        List<User> user = userRepository.findByUserName(userName);
+        
+        // Wenn die Liste Einträge enthält...
+        if(user != null && !user.isEmpty()){
+            // ... dann diese als Body zurückgeben
+            return new ResponseEntity(user, HttpStatus.OK);
+        } else {
+            // ... ansonsten ResourceNotFoundException (404)
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
+    }
 }
