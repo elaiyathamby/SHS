@@ -9,7 +9,7 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css\style.css">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"> </script>
+    <!-- not in use yet <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"> </script>-->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 </head>
@@ -30,41 +30,9 @@
             </div>
 
             <ul class="list-unstyled components" id="app-nav">
-                <li class="active">
-                    <a class="btn btn-secondary gohome" href="/index.html">Home</a><br />
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle btn">
-                        <i class="fas fa-home"></i>
-                        Level 1
-                    </a>
-                    <ul class="collapse list-unstyled" id="homeSubmenu">
-                        <li>
-                            <a href="#" onclick="changeRoom('Kitchen')" class="btn btn-secondary">Kitchen</a>
-                        </li>
-                        <li>
-                            <a href="#" onclick="changeRoom('Livingroom')" class="btn btn-secondary">Livingroom</a>
-                        </li>
-                        <li>
-                            <a href="#" onclick="changeRoom('Bathroom')" class="btn btn-secondary">Bathroom</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle btn">
-                        <i class="fas fa-copy"></i>
-                        Level 2
-                    </a>
-                    <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <li>
-                            <a href="#" onclick="changeRoom('Master Room')" class="btn btn-secondary">Master Room</a>
-                        </li>
-                        <li>
-                            <a href="#" onclick="changeRoom('Bathroom')" class="btn btn-secondary">Bathroom</a>
-                        </li>
-                        <li>
-                            <a href="#" onclick="changeRoom('Kids Room')" class="btn btn-secondary">Kids Room</a>
-                        </li>
-                    </ul>
-                </li>
+                <a class="btn btn-secondary gohome" href="/index.html">Home</a><br />
+                <app-level title="Level 1" sml="lvlone" smlref = '#lvlone' ></app-level>
+                <app-level title="Level 2" sml="lvltwo" smlref = '#lvltwo' ></app-level>
                 <app-level title="Level 3" sml="lvlthree" smlref = '#lvlthree' ></app-level>
             </ul>
 
@@ -74,57 +42,6 @@
             <lamp></lamp>
             <room></room>
             <tv></tv>
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="img\living-room.jpg" alt="Living Room">
-                <div class="card-body">
-                    <h5 class="card-title">Living Room</h5>
-                    <p class="card-text">
-                        <label for="customRange3">Brightness</label>
-                        <input type="range" class="custom-range" min="0" max="5" step="0.5" id="customRange3">
-                    </p>
-                    <p class="card-text">Room Temp <input type="number" value="24"></p>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="img\Philips-LivingColors.jpg" alt="Philips-LivingColors">
-                <div class="card-body">
-                    <h5 class="card-title">Philips-LivingColors</h5>
-                    <p>Light</p>
-                    <label class="switch">
-                        <input type="checkbox">
-                        <span class="slider round"></span>
-                    </label>
-                    <p class="card-text">
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownColor"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Color
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownColor">
-                                <a class="dropdown-item" href="#" onclick="changeColor('dropdownColor','red');">Red</a>
-                                <a class="dropdown-item" href="#"
-                                    onclick="changeColor('dropdownColor','green');">Green</a>
-                                <a class="dropdown-item" href="#"
-                                    onclick="changeColor('dropdownColor','blue');">Blue</a>
-                            </div>
-                        </div>
-                    </p>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="img\smart_tv.jpeg" alt="Smart Tv">
-                <div class="card-body">
-                    <h5 class="card-title">Smart TV</h5>
-                    <p class="card-text">
-                        <p>TV Power</p>
-                        <label class="switch">
-                            <input type="checkbox">
-                            <span class="slider round"></span>
-                        </label>
-                    </p>
-                    <p class="card-text">Chanel <input type="number" value="42"></p>
-                </div>
-            </div>
             <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src="img\plus.png" alt="add">
                 <div class="card-body">

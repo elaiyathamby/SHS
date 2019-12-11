@@ -1,6 +1,3 @@
-
-
-
 Vue.component('lamp', {
     data: function () {
         return {
@@ -24,11 +21,9 @@ Vue.component('lamp', {
                                 Color
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownColor">
-                                <a class="dropdown-item" href="#" onclick="changeColor('dropdownColor','red');">Red</a>
-                                <a class="dropdown-item" href="#"
-                                    onclick="changeColor('dropdownColor','green');">Green</a>
-                                <a class="dropdown-item" href="#"
-                                    onclick="changeColor('dropdownColor','blue');">Blue</a>
+                                <a class="dropdown-item" href="#" onclick="changeColor('dropdownColor','red')" >Red</a>
+                                <a class="dropdown-item" href="#" onclick="changeColor('dropdownColor','green');">Green</a>
+                                <a class="dropdown-item" href="#" onclick="changeColor('dropdownColor','blue');">Blue</a>
                             </div>
                         </div><br>
                         <label for="customRange3">Brightness</label>
@@ -146,41 +141,7 @@ var nav = new Vue({
 var app = new Vue({
     el: '#app',
     data: {
-        message: 'Hello ',
-        person: {
-            firstname: "Subash"
-        },
-        names: [
-            "Subash",
-            "Peter",
-            "Mätu",
-            "Jo-L",
-            "Chrisi MacChris"
-        ],
-        title: "My first Vue app",
-        isDisabled: false,
-        showMessage: false,
-        movieTitle: "Please add a movie",
-        movies: [
-            { name: "Avangers 1" },
-            { name: "Avangers 2" },
-            { name: "Avangers 3" },
-            { name: "Avangers 4" }
-        ]
     },
     methods: {
-        changeMsg: function (text) {
-            this.message = text;
-        },
-        addMovie: function () {
-            if (this.movieTitle != "") {
-                this.movies.push({ name: this.movieTitle });
-                if (this.movies.length >= 5) {
-                    this.isDisabled = true;
-                    this.showMessage = true;
-                }
-            }
-
-        }
     }
 })
