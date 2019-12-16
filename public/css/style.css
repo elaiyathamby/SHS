@@ -371,3 +371,8 @@ button.home{
 a.btn-secondary.gohome{
     background-color: gold;
 }
+
+.dropdown-menu {
+    padding: 0 !important;
+    min-width: 0px !important;
+}
