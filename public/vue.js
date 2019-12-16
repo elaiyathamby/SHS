@@ -63,8 +63,10 @@ Vue.component('room', {
 })
 
 Vue.component('tv', {
-    data: {
-        tvname: 'Phillips'
+    data: function () {
+        return {
+            tvname: 'Phillips'
+        }
     },
     template: `
     <div class="card" style="width: 18rem;" >
@@ -94,7 +96,7 @@ Vue.component('app-level', {
 
         }
     },
-    props: ['title', 'sml', 'smlref' ],
+    props: ['title', 'sml', 'smlref'],
     template: `
         <li>
             <a v-bind:href="smlref" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle btn">
@@ -117,31 +119,44 @@ Vue.component('app-level', {
 })
 
 var nav = new Vue({
-    el: '#app-nav',
+    el: '#app-main',
     data: {
-        title: "Level 3",
-        subMenueNumber: "lvl"
+        inRoom: "",
+        house: "Houses",
+        houses: [],
+        floors: [],
+        rooms: [],
+    },
+    mounted: function () {
+        this.getHouses();
     },
     methods: {
-        changeMsg: function (text) {
-            this.message = text;
+        setHouse: function (name) {
+            this.house = name;
         },
-        addMovie: function () {
-            if (this.movieTitle != "") {
-                this.movies.push({ name: this.movieTitle });
-                if (this.movies.length >= 5) {
-                    this.isDisabled = true;
-                    this.showMessage = true;
-                }
-            }
-        }
-    }
+        setRoom: function (name) {
+            this.inRoom = name;
+        },
+        getHouses: function () {
+            axios.get("http://127.0.0.1:8090/house")
+                .then((res) => {
+                    this.houses = res.data;
+                })
+        },
+        getFloorsByHouse: function (houseid, housename) {
+            this.setHouse(housename);
+            axios.get("http://127.0.0.1:8090/floor/house/" + houseid)
+                .then((res) => {
+                    this.floors = res.data;
+                })
+        },
+        getRoomsByFloor: function (floorid) {
+            axios.get("http://127.0.0.1:8090/room/floor/" + floorid)
+                .then((res) => {
+                    this.rooms = res.data;
+                })
+        },
+    },
+    
 })
 
-var app = new Vue({
-    el: '#app',
-    data: {
-    },
-    methods: {
-    }
-})

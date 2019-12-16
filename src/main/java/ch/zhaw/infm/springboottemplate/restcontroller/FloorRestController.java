@@ -51,4 +51,19 @@ public class FloorRestController {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
     }
+
+    @RequestMapping(value = "/floor/house/{houseid}", method = RequestMethod.GET)
+    public ResponseEntity<List<Floor>> getFloorByHouse(@PathVariable("houseid") Long houseid){
+        // Alle Karten aus dem Repository laden und der cards-Variable zuweisen
+        List<Floor> floor = floorRepository.findByHouseHouseID(houseid);
+        
+        // Wenn die Liste Einträge enthält...
+        if(floor != null && !floor.isEmpty()){
+            // ... dann diese als Body zurückgeben
+            return new ResponseEntity(floor, HttpStatus.OK);
+        } else {
+            // ... ansonsten ResourceNotFoundException (404)
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
+    }
 }

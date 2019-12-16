@@ -14,6 +14,7 @@ public interface FloorRepository extends JpaRepository<Floor, Long> {
    
     
     List<Floor> findByFloorID(Long id);
+    List<Floor> findByHouseHouseID(Long id);
     
     
 }

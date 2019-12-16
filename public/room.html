@@ -11,6 +11,7 @@
 
     <!-- not in use yet <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"> </script>-->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 </head>
 
@@ -21,7 +22,7 @@
 </header>
 
 <body>
-    <div class="wrapper">
+    <div class="wrapper" id="app-main">
         <!-- Sidebar  -->
         <nav id="sidebar" class="col-sm-2 d-none d-md-block bg-light sidebar">
             <div class="sidebar-header">
@@ -31,14 +32,31 @@
 
             <ul class="list-unstyled components" id="app-nav">
                 <a class="btn btn-secondary gohome" href="/index.html">Home</a><br />
-                <app-level title="Level 1" sml="lvlone" smlref = '#lvlone' ></app-level>
-                <app-level title="Level 2" sml="lvltwo" smlref = '#lvltwo' ></app-level>
-                <app-level title="Level 3" sml="lvlthree" smlref = '#lvlthree' ></app-level>
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">{{ house }}
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li v-for="house in houses" v-on:click="getFloorsByHouse(house.houseID,house.houseName)"
+                            class="btn btn-secondary">{{ house.houseName }}</li>
+                    </ul>
+                </div>
+                <li v-for="floor in floors">
+                    <div class="dropdown">
+                        <button v-on:click="getRoomsByFloor(floor.floorID)" class="btn btn-primary dropdown-toggle"
+                            type="button" data-toggle="dropdown">
+                            Floor {{ floor.floorNumber}}
+                            <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <li v-for="room in rooms"><a v-on:click="setRoom('Floor '+floor.floorNumber+': '+room.roomName)" href="#" class="btn btn-secondary">{{room.roomName}}</a></li>
+                        </ul>
+                    </div>
+                </li>
             </ul>
 
         </nav>
-        <div id="app" class="cards">
-            <h1 id="currentRoom">Living Room</h1>
+        <div class="cards">
+            <h1>{{house}}</h1>
+            <h2>{{inRoom}}</h1>
             <lamp></lamp>
             <room></room>
             <tv></tv>
