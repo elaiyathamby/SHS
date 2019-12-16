@@ -14,9 +14,7 @@ import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-/**
- * Beispiel-Entity-Klasse zur Verwaltung von Welten
- */
+
 @Entity
 public class User implements Serializable {
     @Id
@@ -24,36 +22,50 @@ public class User implements Serializable {
     private Long userID;
     private String userName;
     private String password;
-    
     @OneToMany
     @JsonIgnore
     private Set<House> houses;
-    
-	public Set<House> getHouses() {
-		return houses;
-	}
-	public void setHouses(Set<House> houses) {
-		this.houses = houses;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	public Long getUserID() {
-		return userID;
-	}
-	public void setUserID(Long userID) {
-		this.userID = userID;
-	}
-	public String getUserName() {
-		return userName;
-	}
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-	public String getPassword() {
-		return password;
-	}
-    
-    
-    
+
+	public User() {
+    }
+
+    public User(String userName, String password, Set<House> houses) {
+        this.userName = userName;
+        this.password = password;
+        this.houses = houses;
+    }
+
+    public Set<House> getHouses() {
+        return houses;
+    }
+
+    public void setHouses(Set<House> houses) {
+        this.houses = houses;
+    }
+
+    public Long getUserID() {
+        return userID;
+    }
+
+    public void setUserID(Long userID) {
+        this.userID = userID;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+
 }

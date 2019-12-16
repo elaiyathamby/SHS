@@ -12,71 +12,81 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
-/**
- * 
- */
+
 @Entity
 public class Room implements Serializable {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long roomID;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long roomID;
 
-	private int roomSizeM2;
-	private String roomName;
+    private int roomSizeM2;
+    private String roomName;
 
-	@OneToMany
-	private Set<Lamp> lamps;
-	@OneToMany
-	private Set<Engine> engines;
-	@ManyToOne
-	private Floor floor;
+    @OneToMany
+    private Set<Lamp> lamps;
+    @OneToMany
+    private Set<Engine> engines;
+    @ManyToOne
+    private Floor floor;
 
-	public Set<Lamp> getDevices() {
-		return lamps;
-	}
+    public Room() {
+    }
 
-	public void setDevices(Set<Lamp> lamps) {
-		this.lamps = lamps;
-	}
+    public Room(int roomSizeM2, String roomName, Set<Lamp> lamps, Set<Engine> engines, Floor floor) {
+        this.roomSizeM2 = roomSizeM2;
+        this.roomName = roomName;
+        this.lamps = lamps;
+        this.engines = engines;
+        this.floor = floor;
+    }
 
-	public Set<Engine> getEngines() {
-		return engines;
-	}
 
-	public void setEngines(Set<Engine> engines) {
-		this.engines = engines;
-	}
+    public Set<Lamp> getDevices() {
+        return lamps;
+    }
 
-	public Floor getFloor() {
-		return floor;
-	}
+    public void setDevices(Set<Lamp> lamps) {
+        this.lamps = lamps;
+    }
 
-	public void setFloor(Floor floor) {
-		this.floor = floor;
-	}
+    public Set<Engine> getEngines() {
+        return engines;
+    }
 
-	public void setRoomID(Long roomID) {
-		this.roomID = roomID;
-	}
+    public void setEngines(Set<Engine> engines) {
+        this.engines = engines;
+    }
 
-	public int getRoomSizeM2() {
-		return roomSizeM2;
-	}
+    public Floor getFloor() {
+        return floor;
+    }
 
-	public void setRoomSizeM2(int roomSizeM2) {
-		this.roomSizeM2 = roomSizeM2;
-	}
+    public void setFloor(Floor floor) {
+        this.floor = floor;
+    }
 
-	public String getRoomName() {
-		return roomName;
-	}
+    public void setRoomID(Long roomID) {
+        this.roomID = roomID;
+    }
 
-	public void setRoomName(String roomName) {
-		this.roomName = roomName;
-	}
+    public int getRoomSizeM2() {
+        return roomSizeM2;
+    }
 
-	public Long getRoomID() {
-		return roomID;
-	}
+    public void setRoomSizeM2(int roomSizeM2) {
+        this.roomSizeM2 = roomSizeM2;
+    }
+
+    public String getRoomName() {
+        return roomName;
+    }
+
+    public void setRoomName(String roomName) {
+        this.roomName = roomName;
+    }
+
+    public Long getRoomID() {
+        return roomID;
+    }
 
 }
