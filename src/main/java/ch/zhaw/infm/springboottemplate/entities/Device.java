@@ -1,85 +1,80 @@
 package ch.zhaw.infm.springboottemplate.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Set;
 
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.NotNull;
-
 
 @MappedSuperclass
 public class Device implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long deviceID;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long deviceID;
 
-    private String deviceName;
-    private boolean isActive;
-    private Long price;
+	private String deviceName;
+	private boolean isActive;
+	private Long price;
 
-    @ManyToOne
-    private Room room;
-    @OneToMany
-    private Set<Schedule> schedules;
+	@ManyToOne
+	private Room room;
+	@OneToMany
+	private Set<Schedule> schedules;
 
-    public Device() {
-    }
+	public Device() {
+	}
 
-    public Device(String deviceName, boolean isActive, Long price, Room room, Set<Schedule> schedules) {
-        this.deviceName = deviceName;
-        this.isActive = isActive;
-        this.price = price;
-        this.room = room;
-        this.schedules = schedules;
-    }
+	public Device(String deviceName, boolean isActive, Long price, Room room, Set<Schedule> schedules) {
+		this.deviceName = deviceName;
+		this.isActive = isActive;
+		this.price = price;
+		this.room = room;
+		this.schedules = schedules;
+	}
 
-    public Room getRoom() {
-        return room;
-    }
+	public Room getRoom() {
+		return room;
+	}
 
-    public void setRoom(Room room) {
-        this.room = room;
-    }
+	public void setRoom(Room room) {
+		this.room = room;
+	}
 
-    public Long getDeviceId() {
-        return deviceID;
-    }
+	public Long getDeviceId() {
+		return deviceID;
+	}
 
-    public void setDeviceId(Long deviceId) {
-        this.deviceID = deviceId;
-    }
+	public void setDeviceId(Long deviceId) {
+		this.deviceID = deviceId;
+	}
 
-    public String getDeviceName() {
-        return deviceName;
-    }
+	public String getDeviceName() {
+		return deviceName;
+	}
 
-    public void setDeviceName(String deviceName) {
-        this.deviceName = deviceName;
-    }
+	public void setDeviceName(String deviceName) {
+		this.deviceName = deviceName;
+	}
 
-    public boolean isActive() {
-        return isActive;
-    }
+	public boolean isActive() {
+		return isActive;
+	}
 
-    public void setActive(boolean isActive) {
-        this.isActive = isActive;
-    }
+	public void setActive(boolean isActive) {
+		this.isActive = isActive;
+	}
 
-    public Long getPrice() {
-        return price;
-    }
+	public Long getPrice() {
+		return price;
+	}
 
-    public void setPrice(Long price) {
-        this.price = price;
-    }
+	public void setPrice(Long price) {
+		this.price = price;
+	}
 
 }
